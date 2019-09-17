@@ -6,7 +6,7 @@ import 'dart:ui';
 
 import 'package:vector_math/vector_math_64.dart';
 
-import '../utilities/http.dart';
+// import '../utilities/http.dart';
 import '../utilities/numbers.dart';
 import '../vector_drawable.dart';
 
@@ -207,7 +207,7 @@ Future<Image> resolveImage(String href) async {
   };
 
   if (href.startsWith('http')) {
-    final Uint8List bytes = await httpGet(href);
+    final Uint8List bytes = Uint8List(1); // await httpGet(href);
     return decodeImage(bytes);
   }
 

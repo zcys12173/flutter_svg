@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+// import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' show Picture;
 
@@ -396,27 +396,27 @@ class SvgPicture extends StatefulWidget {
   /// `android.permission.READ_EXTERNAL_STORAGE` permission.
   ///
   /// If [excludeFromSemantics] is true, then [semanticLabel] will be ignored.
-  SvgPicture.file(
-    File file, {
-    Key key,
-    this.width,
-    this.height,
-    this.fit = BoxFit.contain,
-    this.alignment = Alignment.center,
-    this.matchTextDirection = false,
-    this.allowDrawingOutsideViewBox = false,
-    this.placeholderBuilder,
-    Color color,
-    BlendMode colorBlendMode = BlendMode.srcIn,
-    this.semanticsLabel,
-    this.excludeFromSemantics = false,
-  })  : pictureProvider = FilePicture(
-            allowDrawingOutsideViewBox == true
-                ? svgByteDecoderOutsideViewBox
-                : svgByteDecoder,
-            file,
-            colorFilter: _getColorFilter(color, colorBlendMode)),
-        super(key: key);
+  // SvgPicture.file(
+  //   File file, {
+  //   Key key,
+  //   this.width,
+  //   this.height,
+  //   this.fit = BoxFit.contain,
+  //   this.alignment = Alignment.center,
+  //   this.matchTextDirection = false,
+  //   this.allowDrawingOutsideViewBox = false,
+  //   this.placeholderBuilder,
+  //   Color color,
+  //   BlendMode colorBlendMode = BlendMode.srcIn,
+  //   this.semanticsLabel,
+  //   this.excludeFromSemantics = false,
+  // })  : pictureProvider = FilePicture(
+  //           allowDrawingOutsideViewBox == true
+  //               ? svgByteDecoderOutsideViewBox
+  //               : svgByteDecoder,
+  //           file,
+  //           colorFilter: _getColorFilter(color, colorBlendMode)),
+  //       super(key: key);
 
   /// Creates a widget that displays a [PictureStream] obtained from a [Uint8List].
   ///
