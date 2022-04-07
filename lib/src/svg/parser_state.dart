@@ -511,14 +511,17 @@ class _Elements {
     if (href == null) {
       return;
     }
-    final Offset offset = Offset(
-      parserState.parseDoubleWithUnits(
-        parserState.attribute('x', def: '0'),
-      )!,
-      parserState.parseDoubleWithUnits(
-        parserState.attribute('y', def: '0'),
-      )!,
-    );
+    // final Offset offset = Offset(
+    //   parserState.parseDoubleWithUnits(
+    //     parserState.attribute('x', def: '0'),
+    //   )!,
+    //   parserState.parseDoubleWithUnits(
+    //     parserState.attribute('y', def: '0'),
+    //   )!,
+    // );
+
+    final Offset offset = Offset(0.0,0.0);
+    // final Size size = Size(100,100);
     final Size size = Size(
       parserState.parseDoubleWithUnits(
         parserState.attribute('width', def: '0'),
@@ -537,7 +540,7 @@ class _Elements {
       parserState.parseStyle(parserState.rootBounds, parentStyle,
           currentColor: parent.color),
       size: size,
-      transform: parseTransform(parserState.attribute('transform'))?.storage,
+      transform: parseTransform(parserState.attribute('transform'))?.storage
     );
     parserState.checkForIri(drawable);
 

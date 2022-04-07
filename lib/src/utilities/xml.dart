@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:xml/xml_events.dart';
 
 /// The namespace for xlink from the SVG 1.1 spec.
@@ -50,12 +52,30 @@ String? getAttribute(
   return raw == '' ? def : raw;
 }
 
+String appendRotateCenter(String transform,double cx,double cy){
+  if(!transform.contains("rotate")){
+    return transform;
+  }
+
+  int startIndex = transform.indexOf("rotate(");
+  int appendIndex = transform.indexOf(")",startIndex);
+  String finalStr =  transform.substring(0,appendIndex)+",$cx,$cy"+transform.substring(appendIndex);
+  print(finalStr);
+  return finalStr;
+}
+
 String _getAttribute(
   Map<String, String> attributes,
   String localName, {
   String def = '',
 }) {
-  return attributes[localName] ?? def;
+  String result = attributes[localName] ?? def;
+  if(localName=="transform"){
+    double cx = double.parse(attributes["width"]??"0")/2;
+    double cy = double.parse(attributes["height"]??"0")/2;
+    result = appendRotateCenter(result, cx, cy);
+  }
+  return result;
 }
 
 /// Extension on List<XmlEventAttribute> for easy conversion to an attribute

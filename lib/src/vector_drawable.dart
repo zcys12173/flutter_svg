@@ -813,8 +813,10 @@ class DrawableViewport {
     this.size,
     this.viewBox, {
     this.viewBoxOffset = Offset.zero,
-  })  : assert(size != null), // ignore: unnecessary_null_comparison
-        assert(viewBox != null), // ignore: unnecessary_null_comparison
+  })  : assert(size != null),
+        // ignore: unnecessary_null_comparison
+        assert(viewBox != null),
+        // ignore: unnecessary_null_comparison
         assert(viewBoxOffset != null); // ignore: unnecessary_null_comparison
 
   /// The offset for all drawing commands in this Drawable.
@@ -1058,6 +1060,8 @@ class DrawableGroup implements DrawableStyleable, DrawableParent {
       return;
     }
 
+    // canvas.drawRect(bounds, Paint()..color = Color(0xFFFF9000));
+    // return;
     final Function innerDraw = () {
       if (style!.groupOpacity == 0) {
         return;
@@ -1153,14 +1157,10 @@ class DrawableGroup implements DrawableStyleable, DrawableParent {
 /// A raster image (e.g. PNG, JPEG, or GIF) embedded in the drawable.
 class DrawableRasterImage implements DrawableStyleable {
   /// Creates a new [DrawableRasterImage].
-  const DrawableRasterImage(
-    this.id,
-    this.image,
-    this.offset,
-    this.style, {
-    this.size,
-    this.transform,
-  })  : assert(image != null), // ignore: unnecessary_null_comparison
+  const DrawableRasterImage(this.id, this.image, this.offset, this.style,
+      {this.size, this.transform})
+      : assert(image != null),
+        // ignore: unnecessary_null_comparison
         assert(offset != null); // ignore: unnecessary_null_comparison
 
   @override
@@ -1183,21 +1183,20 @@ class DrawableRasterImage implements DrawableStyleable {
 
   @override
   void draw(Canvas canvas, Rect bounds) {
+    final Size canvasSize = Size(bounds.width, bounds.height);
     final Size imageSize = Size(
       image.width.toDouble(),
       image.height.toDouble(),
     );
     Size? desiredSize = imageSize;
     double scale = 1.0;
-    if (size != null) {
-      desiredSize = size;
-      scale = math.min(
-        size!.width / image.width,
-        size!.height / image.height,
-      );
-    }
+    desiredSize = canvasSize;
+    scale = math.min(
+      canvasSize.width / image.width,
+      canvasSize.height / image.height,
+    );
     if (scale != 1.0 || offset != Offset.zero || transform != null) {
-      final Size halfDesiredSize = desiredSize! / 2.0;
+      final Size halfDesiredSize = desiredSize / 2.0;
       final Size scaledHalfImageSize = imageSize * scale / 2.0;
       final Offset shift = Offset(
         halfDesiredSize.width - scaledHalfImageSize.width,
@@ -1247,7 +1246,8 @@ class DrawableRasterImage implements DrawableStyleable {
 class DrawableShape implements DrawableStyleable {
   /// Creates a new [DrawableShape].
   const DrawableShape(this.id, this.path, this.style, {this.transform})
-      : assert(path != null), // ignore: unnecessary_null_comparison
+      : assert(path != null),
+        // ignore: unnecessary_null_comparison
         assert(style != null); // ignore: unnecessary_null_comparison
 
   @override

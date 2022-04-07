@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/avd.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg_example/widgets/mock.dart';
+import 'package:flutter_svg_example/widgets/scratch_image_widget.dart';
 
 const List<String> _assetNames = <String>[
   // 'assets/notfound.svg', // uncomment to test an asset that doesn't exist.
@@ -135,25 +137,38 @@ class _MyHomePageState extends State<_MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(children: <Widget>[
-        Slider(
-            min: 5.0,
-            max: MediaQuery.of(context).size.width - 10.0,
-            value: _dimension,
-            onChanged: (double val) {
-              setState(() => _dimension = val);
-            }),
-        Expanded(
-          child: GridView.extent(
-            shrinkWrap: true,
-            maxCrossAxisExtent: _dimension,
-            padding: const EdgeInsets.all(4.0),
-            mainAxisSpacing: 4.0,
-            crossAxisSpacing: 4.0,
-            children: _painters.toList(),
+      body: Container(
+        color: Colors.lightBlue,
+        child: Center(
+          child: Container(
+            height: 100,
+            width: 100,
+            color: Colors.lightGreen,
+            alignment: Alignment.center,
+            child: ScratchImage(data: mockData,height: 200,width: 200),
           ),
         ),
-      ]),
+      ),
+
+      // body: Column(children: <Widget>[
+      //   Slider(
+      //       min: 5.0,
+      //       max: MediaQuery.of(context).size.width - 10.0,
+      //       value: _dimension,
+      //       onChanged: (double val) {
+      //         setState(() => _dimension = val);
+      //       }),
+      //   Expanded(
+      //     child: GridView.extent(
+      //       shrinkWrap: true,
+      //       maxCrossAxisExtent: _dimension,
+      //       padding: const EdgeInsets.all(4.0),
+      //       mainAxisSpacing: 4.0,
+      //       crossAxisSpacing: 4.0,
+      //       children: _painters.toList(),
+      //     ),
+      //   ),
+      // ]),
     );
   }
 }
