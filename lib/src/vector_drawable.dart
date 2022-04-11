@@ -1183,7 +1183,8 @@ class DrawableRasterImage implements DrawableStyleable {
 
   @override
   void draw(Canvas canvas, Rect bounds) {
-    final Size canvasSize = Size(bounds.width, bounds.height);
+    // final Size canvasSize = Size(bounds.width, bounds.height);
+    final Size canvasSize = this.size!;
     final Size imageSize = Size(
       image.width.toDouble(),
       image.height.toDouble(),
@@ -1203,11 +1204,11 @@ class DrawableRasterImage implements DrawableStyleable {
         halfDesiredSize.height - scaledHalfImageSize.height,
       );
       canvas.save();
-      canvas.translate(offset.dx + shift.dx, offset.dy + shift.dy);
       canvas.scale(scale, scale);
       if (transform != null) {
         canvas.transform(transform!);
       }
+      canvas.translate(offset.dx + shift.dx, offset.dy + shift.dy);
     }
     canvas.drawImage(image, Offset.zero, Paint());
     if (scale != 1.0 || offset != Offset.zero || transform != null) {

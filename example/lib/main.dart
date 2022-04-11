@@ -141,11 +141,11 @@ class _MyHomePageState extends State<_MyHomePage> {
         color: Colors.lightBlue,
         child: Center(
           child: Container(
-            height: 100,
-            width: 100,
+            height: 200,
+            width: 200,
             color: Colors.lightGreen,
             alignment: Alignment.center,
-            child: ScratchImage(data: mockData,height: 200,width: 200),
+            child: ScratchImage(data: mockBackdrop2,height: 200,width: 200),
           ),
         ),
       ),

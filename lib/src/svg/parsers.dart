@@ -96,7 +96,6 @@ Matrix4 _parseSvgSkewY(String? paramsStr, Matrix4 current) {
 }
 
 Matrix4 _parseSvgTranslate(String? paramsStr, Matrix4 current) {
-  return current;
   final List<String> params = paramsStr!.split(_valueSeparator);
   assert(params.isNotEmpty);
   assert(params.length <= 2);

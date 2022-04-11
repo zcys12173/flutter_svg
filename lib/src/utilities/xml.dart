@@ -70,11 +70,11 @@ String _getAttribute(
   String def = '',
 }) {
   String result = attributes[localName] ?? def;
-  if(localName=="transform"){
-    double cx = double.parse(attributes["width"]??"0")/2;
-    double cy = double.parse(attributes["height"]??"0")/2;
-    result = appendRotateCenter(result, cx, cy);
-  }
+  // if(localName=="transform"){
+  //   double cx = double.parse(attributes["width"]??"0")/2;
+  //   double cy = double.parse(attributes["height"]??"0")/2;
+  //   result = appendRotateCenter(result, cx, cy);
+  // }
   return result;
 }
 

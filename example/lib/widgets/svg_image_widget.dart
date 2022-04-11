@@ -76,7 +76,7 @@ class SVGPainter extends CustomPainter {
     // canvas.restore();
 
     // canvas.rotate(angle);
-    var picture = _svgDrawable.toPicture(size:_rawSize,clipToViewBox:false);
+    var picture = _svgDrawable.toPicture(size:_rawSize,clipToViewBox:true);
     canvas.drawPicture(picture);
     // var pictureRecord = PictureRecorder();
     // Canvas pictureCanvas = Canvas(pictureRecord,Offset.zero&size);
